@@ -1,0 +1,11 @@
+
+.text-right
+{
+  position: fixed;
+  width: 600px;
+  height: 200px;
+  left: 80%;
+  top: 200px;
+  margin-left: -300px; /*half the width*/
+  text-align: left;
+}
