@@ -6,7 +6,6 @@
 	<artifactId>backend</artifactId>
 	<name>backend</name>
 	<description>aebs backend project Spring boot</description>
-	<packaging>pom</packaging>
 
 	<parent>
 		<groupId>com.aebs</groupId>
