@@ -3,8 +3,11 @@ export class CallcForm {
         public month: number,
         public year: number,
         public searchBy: string,
-        public searchText : string,
-        public filterBy: string,
+        public searchByText : string,
+        public filterByATN: boolean,
+        public filterByUSOC: boolean,
+        public filterByZero: boolean,
+        public filterByMRC: boolean,
         public sortBy: string
     ) { }
 }

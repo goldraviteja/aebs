@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CallcFormComponent } from './callc-form/callc-form.component';
 import { CallcDetailsComponent } from './callc-details/callc-details.component';
+import {CallcService} from './callc-services/callc.services';
 
 const appRoutes : Routes =[
 { path: '', component: CallcFormComponent },
@@ -27,7 +28,7 @@ const appRoutes : Routes =[
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [CallcService],
   bootstrap: [AppComponent]
 })
 

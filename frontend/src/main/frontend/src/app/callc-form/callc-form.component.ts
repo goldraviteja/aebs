@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CallcForm }    from './callcForm';
 import { Router } from '@angular/router';
+import {CallcService} from '../callc-services/callc.services';
+import {Response} from '../response_status/response-status';
 
 @Component({
   moduleId: module.id,
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
 
 export class CallcFormComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  constructor(private router : Router, private callcService : CallcService) { }
 
   searchCriteria =  ['ATN', 'WTN', 'USOC'];
   sortByValues = ['ATN,USOC', 'USOC,WTN'];
@@ -20,8 +22,11 @@ export class CallcFormComponent implements OnInit {
   isSearchByATN = false;
   isSearchByUSOC = false;
   isChecked = false;
+  _response: Response;
+      displayError = false;
+    errorMessage: string;
 
-  model = new CallcForm(1, 2017, '', '', '','');
+  model = new CallcForm(1, 2017, '', '', false,false,false,false,'');
 
   onSelectSearchBy(searchBySelectValue : String, filterByATN, filterByUSOC, filterByZero, filterByMRC) : void {
 
@@ -45,6 +50,19 @@ export class CallcFormComponent implements OnInit {
   }
 
     onSubmit() {
-      this.router.navigate(['/callc-details']);
+      
+      alert(this.model);
+      this.callcService.post(this.model).subscribe(
+        res => {this._response = res;
+        alert(this._response);
+        if (this._response != undefined && this._response.success ) {
+            this.router.navigate( ['/callc-details'] );
+        } 
+        },
+          err => {
+                this.displayError = true;
+                this.errorMessage = "Something went wrong! Please check with Administrator.";
+            }
+      );
   }
 }
