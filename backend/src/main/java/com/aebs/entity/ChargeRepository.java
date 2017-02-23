@@ -23,5 +23,6 @@ public interface ChargeRepository extends JpaRepository<Charge, Long> {
  		+ "group by c.usoc, c.occ, c.fullAmt/c.qty")
  public List<Charge> findByAtnSummary(@Param("atn") String atn);
  
+ 
 }
 

@@ -9,6 +9,8 @@ import { CallcFormComponent } from './callc-form/callc-form.component';
 import { CallcDetailsComponent } from './callc-details/callc-details.component';
 import {CallcService} from './callc-services/callc.services';
 
+import {AgGridModule} from 'ag-grid-angular/main';
+
 const appRoutes : Routes =[
 { path: '', component: CallcFormComponent },
 { path: 'callc-details', component: CallcDetailsComponent }
@@ -26,6 +28,7 @@ const appRoutes : Routes =[
     BrowserModule,
     FormsModule,
     HttpModule,
+    AgGridModule.withComponents([CallcDetailsComponent]),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [CallcService],
