@@ -1,4 +1,4 @@
-import { Component, OnInit,Input  } from '@angular/core';
+import { Component, OnInit,OnDestroy   } from '@angular/core';
 import {CallcDetails} from '../callc-details/callcDetails'
 import { ActivatedRoute } from '@angular/router';
 
@@ -19,8 +19,13 @@ export class CallcDetailsComponent implements OnInit {
   ngOnInit() {
   	this.sub = this.route.params.subscribe(params => {
        this.str = params['str']; 
-       alert(JSON.parse(this.str));
+      // TODO: Need to developer a table to display the result summary
        // In a real app: dispatch action to load the details here.
     });
   }
+
+    ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
 }

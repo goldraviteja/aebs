@@ -59,9 +59,8 @@ export class CallcFormComponent implements OnInit {
         if (this._response != undefined && this._response.success ) {
           this.callcDetailsList = this._response.body as CallcDetails[];
           let body = JSON.stringify(this.callcDetailsList);
-          alert("In body" + body);
-          let str = "entity";
-          this.router.navigate( ['/callc-details', {str : str}]);
+          alert("In body" + body);         
+          this.router.navigate( ['/callc-details', {str : body}]);
           }
         },
           err => {
