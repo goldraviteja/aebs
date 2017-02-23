@@ -3,6 +3,8 @@ import { CallcForm }    from './callcForm';
 import { Router } from '@angular/router';
 import {CallcService} from '../callc-services/callc.services';
 import {Response} from '../response_status/response-status';
+import {CallcDetails} from '../callc-details/callcDetails'
+import { CallcDetailsComponent } from '../callc-details/callc-details.component';
 
 @Component({
   moduleId: module.id,
@@ -23,8 +25,9 @@ export class CallcFormComponent implements OnInit {
   isSearchByUSOC = false;
   isChecked = false;
   _response: Response;
-      displayError = false;
-    errorMessage: string;
+  displayError = false;
+  errorMessage: string;
+  callcDetailsList : CallcDetails[];
 
   model = new CallcForm(1, 2017, '', '', false,false,false,false,'');
 
@@ -51,13 +54,15 @@ export class CallcFormComponent implements OnInit {
 
     onSubmit() {
       
-      alert(this.model);
       this.callcService.post(this.model).subscribe(
-        res => {this._response = res;
-        alert(this._response);
+        res => {this._response = res;        
         if (this._response != undefined && this._response.success ) {
-            this.router.navigate( ['/callc-details'] );
-        } 
+          this.callcDetailsList = this._response.body as CallcDetails[];
+          let body = JSON.stringify(this.callcDetailsList);
+          alert("In body" + body);
+          let str = "entity";
+          this.router.navigate( ['/callc-details', {str : str}]);
+          }
         },
           err => {
                 this.displayError = true;
