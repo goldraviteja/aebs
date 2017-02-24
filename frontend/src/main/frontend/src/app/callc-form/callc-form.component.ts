@@ -28,7 +28,6 @@ export class CallcFormComponent implements OnInit {
   displayError = false;
   errorMessage: string;
   callcDetailsList : CallcDetails[];
-  source: LocalDataSource;
   
   isForm = true;
 
@@ -53,7 +52,8 @@ export class CallcFormComponent implements OnInit {
       }
     },
      actions: false,
-     filter : false
+     filter : false,
+     hideSubHeader : true
   };
 
   data = [
@@ -101,10 +101,11 @@ export class CallcFormComponent implements OnInit {
         if (this._response != undefined && this._response.success ) {
           this.isForm = false;
           this.callcDetailsList = this._response.body;
-
+          
+          console.log(this._response);
           console.log(this.callcDetailsList);
           console.log(this.data);
-          this.source = new LocalDataSource(this.callcDetailsList);
+          
           }
         },
           err => {

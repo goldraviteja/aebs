@@ -40,8 +40,7 @@
 </form>
 </div>
 </div>
-<div *ngIf='!isForm'>
-
-
-<ng2-smart-table [settings]="settings" [source]="data" actions.columnTitle= "Summary"></ng2-smart-table>
+<div *ngIf='!isForm' class="container text-left">
+		<ng2-smart-table [settings]="settings" [source]="data"
+			actions.columnTitle="Summary"></ng2-smart-table>
 </div>

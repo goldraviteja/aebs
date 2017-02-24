@@ -25,7 +25,7 @@ export class CallcService {
         this.url = "http://localhost:8080/aebs/getDetails";
        
         let body = JSON.stringify(newCallcForm);
-        alert(body);
+
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
        
