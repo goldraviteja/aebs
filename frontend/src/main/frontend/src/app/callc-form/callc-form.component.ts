@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { CallcForm }    from './callcForm';
 import { Router } from '@angular/router';
 import {CallcService} from '../callc-services/callc.services';
 import {Response} from '../response_status/response-status';
-import {CallcDetails} from '../callc-details/callcDetails'
-import { CallcDetailsComponent } from '../callc-details/callc-details.component';
+import {CallcDetails} from '../callc-details/callcDetails';
+import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 
 @Component({
   moduleId: module.id,
@@ -28,8 +28,50 @@ export class CallcFormComponent implements OnInit {
   displayError = false;
   errorMessage: string;
   callcDetailsList : CallcDetails[];
+  source: LocalDataSource;
+  
+  isForm = true;
 
   model = new CallcForm(1, 2017, '', '', false,false,false,false,'');
+
+   settings = {
+    columns: {
+      usoc: {
+        title: 'USOC'
+      },
+      qty: {
+        title: 'Qty'
+      },
+      cost: {
+        title: 'Cost'
+      },
+      amount: {
+        title: 'Amount'
+      },
+      occ: {
+        title: 'Type'
+      }
+    },
+     actions: false,
+     filter : false
+  };
+
+  data = [
+  {
+    usoc: "JZNDC",
+    qty: "10",
+    cost: "24",
+    amount: "240",
+    occ: "JZNDC"
+  },
+   {
+    usoc: "JZNDC",
+    qty: "10",
+    cost: "24",
+    amount: "240",
+    occ: "JZNDC"
+  }
+];
 
   onSelectSearchBy(searchBySelectValue : String, filterByATN, filterByUSOC, filterByZero, filterByMRC) : void {
 
@@ -57,10 +99,12 @@ export class CallcFormComponent implements OnInit {
       this.callcService.post(this.model).subscribe(
         res => {this._response = res;        
         if (this._response != undefined && this._response.success ) {
-          this.callcDetailsList = this._response.body as CallcDetails[];
-          let body = JSON.stringify(this.callcDetailsList);
-          alert("In body" + body);         
-          this.router.navigate( ['/callc-details', {str : body}]);
+          this.isForm = false;
+          this.callcDetailsList = this._response.body;
+
+          console.log(this.callcDetailsList);
+          console.log(this.data);
+          this.source = new LocalDataSource(this.callcDetailsList);
           }
         },
           err => {

@@ -9,7 +9,7 @@ import { CallcFormComponent } from './callc-form/callc-form.component';
 import { CallcDetailsComponent } from './callc-details/callc-details.component';
 import {CallcService} from './callc-services/callc.services';
 
-import {AgGridModule} from 'ag-grid-angular/main';
+import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 
 const appRoutes : Routes =[
 { path: '', component: CallcFormComponent },
@@ -28,8 +28,8 @@ const appRoutes : Routes =[
     BrowserModule,
     FormsModule,
     HttpModule,
-    AgGridModule.withComponents([CallcDetailsComponent]),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    Ng2SmartTableModule
   ],
   providers: [CallcService],
   bootstrap: [AppComponent]

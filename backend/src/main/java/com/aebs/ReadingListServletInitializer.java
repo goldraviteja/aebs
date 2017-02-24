@@ -1,8 +1,8 @@
 package com.aebs;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
-
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import com.aebs.AebsApplication;
 
 public class ReadingListServletInitializer extends SpringBootServletInitializer {
 

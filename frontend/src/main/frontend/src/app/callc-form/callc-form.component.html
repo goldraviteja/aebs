@@ -1,4 +1,5 @@
-<div class="container text-right">
+<div *ngIf='isForm'>
+<div class="container text-right" >
 <form (ngSubmit)="onSubmit()" #callcForm="ngForm">
 	
 	<div class="form-inline">
@@ -37,4 +38,10 @@
 	</div>
 	<button type="submit" class="btn btn-default">Search</button>
 </form>
+</div>
+</div>
+<div *ngIf='!isForm'>
+
+
+<ng2-smart-table [settings]="settings" [source]="data" actions.columnTitle= "Summary"></ng2-smart-table>
 </div>

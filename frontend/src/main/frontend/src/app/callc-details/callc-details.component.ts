@@ -1,4 +1,4 @@
-import { Component, OnInit,OnDestroy   } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import {CallcDetails} from '../callc-details/callcDetails'
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,22 +10,54 @@ import { ActivatedRoute } from '@angular/router';
 
 export class CallcDetailsComponent implements OnInit {
 
- constructor(private route: ActivatedRoute) {}
+  settings = {
+    columns: {
+      usoc: {
+        title: 'USOC'
+      },
+      qty: {
+        title: 'Qty'
+      },
+      cost: {
+        title: 'Cost'
+      },
+      amount: {
+        title: 'Amount'
+      },
+      occ: {
+      	title: 'Type'
+      }
+    }
+  };
 
-  callcDetailsList : CallcDetails[];
-  str : string;
- private sub: any;
+  data = [
+  {
+    usoc: "JZNDC",
+    qty: "10",
+    cost: "24",
+    amount: "240",
+    occ: "JZNDC"
+  },
+   {
+    usoc: "JZNDC",
+    qty: "10",
+    cost: "24",
+    amount: "240",
+    occ: "JZNDC"
+  }
+];
+
+ constructor(private route: ActivatedRoute) {}
+ 
+ callcDetailsList : CallcDetails[];
+ 
 
   ngOnInit() {
-  	this.sub = this.route.params.subscribe(params => {
-       this.str = params['str']; 
-      // TODO: Need to developer a table to display the result summary
-       // In a real app: dispatch action to load the details here.
-    });
+  	
   }
 
-    ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
-
+ // setCallcDetailsList(callcDetailsList : CallcDetails[]) {
+ // 	CallcDetailsComponent.callcDetailsList = callcDetailsList;
+ // 	console.log(JSON.stringify(CallcDetailsComponent.callcDetailsList));
+ // }
 }
