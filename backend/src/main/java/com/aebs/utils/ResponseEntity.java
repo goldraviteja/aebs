@@ -13,7 +13,7 @@ public class ResponseEntity<T extends Object> {
 
 	private HttpStatus statusCode;
 
-	private int total;
+	private double total;
 
 	private T body;
 
@@ -86,11 +86,11 @@ public class ResponseEntity<T extends Object> {
 		this.statusCode = statusCode;
 	}
 
-	public int getTotal() {
+	public double getTotal() {
 		return total;
 	}
 
-	public void setTotal(int total) {
+	public void setTotal(double total) {
 		this.total = total;
 	}
 }

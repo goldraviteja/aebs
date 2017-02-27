@@ -8,7 +8,7 @@ public class ResponseUtils {
 		return ResponseUtils.renderSuccess(object, status, 0);
 	}
 
-	public static <T extends Object> ResponseEntity<T> renderSuccess(T object, HttpStatus status, int total) {
+	public static <T extends Object> ResponseEntity<T> renderSuccess(T object, HttpStatus status, double total) {
 		ResponseEntity<T> responseEntity = new ResponseEntity<T>();
 		responseEntity.setSuccess(true);
 		responseEntity.setBody(object);

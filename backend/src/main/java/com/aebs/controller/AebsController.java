@@ -44,10 +44,15 @@ public class AebsController {
 		} else {
 			// TODO:
 		}
+		
+		double total = 0;
+		for(CallcDetailsVO callcDetail : callcDetailsVoList) {
+			total = total + callcDetail.getAmount();
+		}
 
 		
 		
-		return ResponseUtils.renderSuccess(callcDetailsVoList, HttpStatus.OK);
+		return ResponseUtils.renderSuccess(callcDetailsVoList, HttpStatus.OK, total);
 	}
 	
 	@RequestMapping(value = "/getATNDetails", method = RequestMethod.GET)
