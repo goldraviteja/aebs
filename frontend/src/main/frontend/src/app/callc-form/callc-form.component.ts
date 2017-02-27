@@ -29,6 +29,7 @@ export class CallcFormComponent implements OnInit {
   displayError = false;
   errorMessage: string;
   callcDetailsList : CallcDetails[];
+  source : LocalDataSource;
   
   isForm = true;
 
@@ -83,17 +84,15 @@ export class CallcFormComponent implements OnInit {
       this.callcService.post(this.model).subscribe(
         res => {this._response = res;        
         if (this._response != undefined && this._response.success ) {
-          this.isForm = false;
-          this.callcDetailsList = this._response.body;
-          
-          console.log(this._response);
-          console.log(this.callcDetailsList);
-          
+            this.isForm = false;
+            this.callcDetailsList = this._response.body;
+            this.source = new LocalDataSource(this.callcDetailsList);
+            this.source.add({usoc : "", qty : "", cost: "Total", amount: this._response.total, occ : "" });
           }
         },
           err => {
                 this.displayError = true;
-                this.errorMessage = "Something went wrong! Please check with Administrator.";
+                this.errorMessage = "Something went wrong! Try again.";
             }
       );
   }
