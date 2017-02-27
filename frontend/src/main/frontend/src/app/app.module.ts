@@ -6,14 +6,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CallcFormComponent } from './callc-form/callc-form.component';
-import { CallcDetailsComponent } from './callc-details/callc-details.component';
 import {CallcService} from './callc-services/callc.services';
 
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 
 const appRoutes : Routes =[
-{ path: '', component: CallcFormComponent },
-{ path: 'callc-details', component: CallcDetailsComponent }
+{ path: '', component: CallcFormComponent }
 ];
 
 
@@ -21,8 +19,7 @@ const appRoutes : Routes =[
 @NgModule({
   declarations: [
     AppComponent,
-    CallcFormComponent,
-    CallcDetailsComponent
+    CallcFormComponent
   ],
   imports: [
     BrowserModule,
@@ -34,8 +31,5 @@ const appRoutes : Routes =[
   providers: [CallcService],
   bootstrap: [AppComponent]
 })
-
-
-
 
 export class AppModule { }

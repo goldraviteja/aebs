@@ -1,9 +1,9 @@
 import { Component, OnInit  } from '@angular/core';
-import { CallcForm }    from './callcForm';
+import { CallcForm }    from '../model/callcForm';
 import { Router } from '@angular/router';
 import {CallcService} from '../callc-services/callc.services';
 import {Response} from '../response_status/response-status';
-import {CallcDetails} from '../callc-details/callcDetails';
+import {CallcDetails} from '../model/callcDetails';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 
 @Component({
@@ -21,6 +21,7 @@ export class CallcFormComponent implements OnInit {
   sortByValues = ['ATN,USOC', 'USOC,WTN'];
   monthList = [1,2,3,4,5,6,7,8,9,10,11,12];
   yearList = [2017,2016,2015,2014,2013,2012];
+  states = ['IL','IN','MI','WI','OH','ALL'];
   isSearchByATN = false;
   isSearchByUSOC = false;
   isChecked = false;
@@ -31,7 +32,7 @@ export class CallcFormComponent implements OnInit {
   
   isForm = true;
 
-  model = new CallcForm(1, 2017, '', '', false,false,false,false,'');
+  model = new CallcForm(1, 2017, '', '', false,false,false,false,'', '');
 
    settings = {
     columns: {
@@ -55,23 +56,6 @@ export class CallcFormComponent implements OnInit {
      filter : false,
      hideSubHeader : true
   };
-
-  data = [
-  {
-    usoc: "JZNDC",
-    qty: "10",
-    cost: "24",
-    amount: "240",
-    occ: "JZNDC"
-  },
-   {
-    usoc: "JZNDC",
-    qty: "10",
-    cost: "24",
-    amount: "240",
-    occ: "JZNDC"
-  }
-];
 
   onSelectSearchBy(searchBySelectValue : String, filterByATN, filterByUSOC, filterByZero, filterByMRC) : void {
 
@@ -104,7 +88,6 @@ export class CallcFormComponent implements OnInit {
           
           console.log(this._response);
           console.log(this.callcDetailsList);
-          console.log(this.data);
           
           }
         },

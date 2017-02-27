@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable}     from 'rxjs/Observable';
-import { CallcForm }    from '../callc-form/callcForm';
+import { CallcForm }    from '../model/callcForm';
 import {Http, RequestOptions, Headers} from '@angular/http';
 import {Response} from '../response_status/response-status';
 

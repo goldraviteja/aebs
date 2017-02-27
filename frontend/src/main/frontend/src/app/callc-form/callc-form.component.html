@@ -32,15 +32,24 @@
 	</div>
 	<div class="form-inline">
 	<label for="sortBy">Sort By</label>
-	<select class="form-control" id="sortBy" required [(ngModel)]="model.sortBy" name="sortBy" #sortBy="ngModel" >
+	<select class="form-control" id="sortBy" [(ngModel)]="model.sortBy" name="sortBy" #sortBy="ngModel" >
 		<option *ngFor="let field of sortByValues" [value]="field">{{field}}</option>
+	</select>
+
+	<label for="state">State</label>
+	<select class="form-control" id="state" [(ngModel)] = "model.state" name="state" #state="ngModel">
+		<option *ngFor="let field of states" [value] = "field">{{field}}</option>
 	</select>
 	</div>
 	<button type="submit" class="btn btn-default">Search</button>
 </form>
 </div>
 </div>
+
 <div *ngIf='!isForm' class="container text-left">
-		<ng2-smart-table [settings]="settings" [source]="data"
+		<ng2-smart-table [settings]="settings" [source]="callcDetailsList"
 			actions.columnTitle="Summary"></ng2-smart-table>
+</div>
+
+<div>
 </div>

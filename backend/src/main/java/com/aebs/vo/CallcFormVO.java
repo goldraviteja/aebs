@@ -1,6 +1,6 @@
 package com.aebs.vo;
 
-public class CallcFormVo {
+public class CallcFormVO {
     private int month;
     private int year;
     private String searchBy;
@@ -10,6 +10,8 @@ public class CallcFormVo {
     private String filterByZero;
     private String filterByMRC;
     private String sortBy;
+    private String state;
+    
 	public int getMonth() {
 		return month;
 	}
@@ -63,6 +65,12 @@ public class CallcFormVo {
 	}
 	public void setSortBy(String sortBy) {
 		this.sortBy = sortBy;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
     
     

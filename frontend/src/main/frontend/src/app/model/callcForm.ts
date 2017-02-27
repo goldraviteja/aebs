@@ -8,6 +8,7 @@ export class CallcForm {
         public filterByUSOC: boolean,
         public filterByZero: boolean,
         public filterByMRC: boolean,
-        public sortBy: string
+        public sortBy: string,
+        public state: string
     ) { }
 }
